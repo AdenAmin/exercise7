@@ -1,9 +1,15 @@
+import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
-        BussinessContact contact2 = new BussinessContact("Aden","AdenB@gmail.com","614-615-4321");
-        contact2.display();
+        BussinessContact contact2 = new BussinessContact("Aden", "adenb@gmail.com", "614-615-4321");
+        ContactCollection contactCollection = new ContactCollection();
+        Contacts contact1 = new Contacts("John Doe", "johndoe@gmail.com");
+        contactCollection.addContact(contact1);
+        contactCollection.addContact(contact2);
+        contactCollection.displayContacts();
     }
 }
+
 
 
 
@@ -73,3 +79,22 @@ class BussinessContact extends Contacts{
         System.out.println("Person's Phone Number is: " + this.number);
     }
 }
+
+class ContactCollection {
+    private ArrayList<Contacts> contactsList;
+
+    public ContactCollection() {
+        contactsList = new ArrayList<>();
+    }
+
+    public void addContact(Contacts contact) {
+        contactsList.add(contact);
+    }
+
+    public void displayContacts() {
+        for (Contacts contact : contactsList) {
+            contact.display();
+        }
+    }
+}
+
